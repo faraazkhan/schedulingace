@@ -2,30 +2,30 @@ require 'spec_helper'
 
 describe ContentController do
 
-  before (:each) do
+  before(:each) do
     @user = FactoryGirl.create(:user)
     sign_in @user
-    @user.add_role :silver # gives the user a role. tests pass regardless of role
+    @user.add_role :instructor # gives the user a role. tests pass regardless of role
   end
 
-  describe "GET 'silver'" do
+  describe "GET 'admin'" do
     it "returns http success" do
-      get 'silver'
-      response.should @user.has_role?(:silver) ? be_success : redirect_to(root_url)
+      get 'admin'
+      response.should @user.has_role?(:admin) ? be_success : redirect_to(root_url)
     end
   end
 
-  describe "GET 'gold'" do
+  describe "GET 'instructor'" do
     it "returns http success" do
-      get 'gold'
-      response.should @user.has_role?(:gold) ? be_success : redirect_to(root_url)
+      get 'instructor'
+      response.should @user.has_role?(:instructor) ? be_success : redirect_to(root_url)
     end
   end
 
-  describe "GET 'platinum'" do
+  describe "GET 'student'" do
     it "returns http success" do
-      get 'platinum'
-      response.should @user.has_role?(:platinum) ? be_success : redirect_to(root_url)
+      get 'student'
+      response.should @user.has_role?(:student) ? be_success : redirect_to(root_url)
     end
   end
 

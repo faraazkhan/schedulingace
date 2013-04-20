@@ -6,9 +6,8 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :view, :silver if user.has_role? :silver
-      can :view, :gold if user.has_role? :gold
-      can :view, :platinum if user.has_role? :platinum
+      can :view, :instructor if user.has_role? :instructor
+      can :view, :student if user.has_role? :student
     end
   end
 end

@@ -116,15 +116,15 @@ describe User do
   describe "#update_plan" do
     before do
       @user = FactoryGirl.create(:user, email: "test@example.com")
-      @role1 = FactoryGirl.create(:role, name: "silver")
-      @role2 = FactoryGirl.create(:role, name: "gold")
+      @role1 = FactoryGirl.create(:role, name: "admin")
+      @role2 = FactoryGirl.create(:role, name: "instructor")
       @user.add_role(@role1.name)
     end
 
     it "updates a users role" do
-      @user.roles.first.name.should == "silver"
+      @user.roles.first.name.should == "admin"
       @user.update_plan(@role2)
-      @user.roles.first.name.should == "gold"
+      @user.roles.first.name.should == "instructor"
     end
 
     it "wont remove original role from database" do
@@ -143,7 +143,7 @@ describe User do
         successful_stripe_response = StripeHelper::Response.new("success")
         Stripe::Customer.stub(:create).and_return(successful_stripe_response)
         @user = User.new(email: "test@testign.com", stripe_token: 12345, name: 'tester', password: 'password')
-        @role = FactoryGirl.create(:role, name: "silver")
+        @role = FactoryGirl.create(:role, name: "instructor")
         @user.add_role(@role.name)
       end
 

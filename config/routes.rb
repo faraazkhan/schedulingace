@@ -1,8 +1,8 @@
 Schedulingace::Application.routes.draw do
   mount StripeEvent::Engine => '/stripe'
-  get "content/gold"
-  get "content/silver"
-  get "content/platinum"
+  get "content/admin"
+  get "content/instructor"
+  get "content/student"
   authenticated :user do
     root :to => 'home#index'
   end

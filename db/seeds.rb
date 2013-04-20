@@ -8,11 +8,13 @@
 # Environment variables (ENV['...']) are set in the file config/application.yml.
 # See http://railsapps.github.com/rails-environment-variables.html
 puts 'ROLES'
-%w[admin silver gold platinum].each do |role|
+Role.delete_all
+%w[admin instructor student].each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
   puts 'role: ' << role
 end
 puts 'DEFAULT USERS'
+User.delete_all
 user = User.find_or_create_by_email :name => 'faraaz khan', :email => 'faraaz@rationalizeit.us', :password => 'password', :password_confirmation => 'password', :stripe_token => 'pk_test_0aJl2L2k98dG9lF3u6zyfDdj'
 puts 'user: ' << user.name
 user.add_role :admin

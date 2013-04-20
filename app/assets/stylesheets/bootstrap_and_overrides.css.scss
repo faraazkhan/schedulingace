@@ -1,3 +1,17 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+.navbar.navbar-fixed-top .navbar-inner {
+  background-color: white;
+  background-image: linear-gradient(to bottom, #000, #000);
+}
+
+.navbar .brand {
+  color: rgb(252, 232, 2);
+}
+
+
+.navbar .nav > li > a {
+  color: rgb(252, 232, 2);
+}
